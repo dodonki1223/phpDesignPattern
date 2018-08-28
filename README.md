@@ -1,2 +1,3 @@
-# phpDesignPattern
-PHPでGoF デザインパターンを実装してみる
+# PHPでGoFデザインパターン
+
+## PHPで作成したGoFデザインパターンの実装例です
