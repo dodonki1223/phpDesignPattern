@@ -24,3 +24,30 @@
         - Abstractにすることで処理の流れを固定化出来る
             - open() → print() → close()
         - Interfaceだと継承先で実装する必要があるため処理の固定化ができない
+
+<br>
+
+- 出力結果
+
+```
+
+CharDisplayの出力を開始します……
+
+|*********|
+|Yahaaaa!!|
+|Yahaaaa!!|
+|Yahaaaa!!|
+|Yahaaaa!!|
+|Yahaaaa!!|
+|*********|
+
+StringDisplayの出力を開始します……
+
+|---------------------------------
+|Banana
+|Banana
+|Banana
+|Banana
+|Banana
+|---------------------------------
+```
