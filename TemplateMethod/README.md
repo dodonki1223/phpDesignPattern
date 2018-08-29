@@ -30,24 +30,22 @@
 - 出力結果
 
 ```
+$ php templateMethodSample.php
+<<HHHHH>>
 
-CharDisplayの出力を開始します……
++------------+
+|Hello, world|
+|Hello, world|
+|Hello, world|
+|Hello, world|
+|Hello, world|
++------------+
 
-|*********|
-|Yahaaaa!!|
-|Yahaaaa!!|
-|Yahaaaa!!|
-|Yahaaaa!!|
-|Yahaaaa!!|
-|*********|
-
-StringDisplayの出力を開始します……
-
-|---------------------------------
-|Banana
-|Banana
-|Banana
-|Banana
-|Banana
-|---------------------------------
++------------------+
+|こんにちは。|
+|こんにちは。|
+|こんにちは。|
+|こんにちは。|
+|こんにちは。|
++------------------+
 ```
