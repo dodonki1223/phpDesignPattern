@@ -85,8 +85,7 @@ class CharDisplay extends AbstractDisplay
     public function open()
     {
 
-        echo PHP_EOL . 'CharDisplayの出力を開始します……' . PHP_EOL . PHP_EOL ;
-        echo '|' . $this->getCharLengthAsterisk($this->displayChar) . '|' . PHP_EOL;
+        echo '<<';
 
     }
 
@@ -97,7 +96,7 @@ class CharDisplay extends AbstractDisplay
     public function print()
     {
 
-        echo '|' . $this->displayChar . '|' . PHP_EOL;
+        echo $this->displayChar;
 
     }
 
@@ -108,33 +107,8 @@ class CharDisplay extends AbstractDisplay
     public function close()
     {
 
-        echo '|' . $this->getCharLengthAsterisk($this->displayChar) . '|' . PHP_EOL;
+        echo '>>' . PHP_EOL;
 
-    }
-
-   /**
-    * 文字列をアスタリスクに変換する
-    *   引数の文字列をバイト数に変換しそのバイト数分のアスタリスクを作成する
-    *
-    * @param  string $char 文字列
-    * @return string 引数の文字列のバイト数分のアスタリスク
-    */
-    private function getCharLengthAsterisk($char)
-    {
-
-        $result = '';
-
-        // 引数で指定された文字列の長さを取得
-        $charLength = strlen($char);
-
-        // 引数で指定された文字列分繰り返す
-        for ($i = 1 ; $i <= $charLength; $i++) {
-
-            $result .= '*';
-
-        }
-
-        return $result;
     }
 
 }
@@ -152,7 +126,14 @@ class StringDisplay extends AbstractDisplay
      * 
      * @var string
      */
-    private $displayString; 
+    private $string;
+
+    /**
+     * コンストラクタで渡された文字列のバイト数
+     * 
+     * @var integer
+     */
+    private $width = 0;
 
    /**
     * コンストラクタ
@@ -162,7 +143,9 @@ class StringDisplay extends AbstractDisplay
     public function __construct($String)
     {
 
-        $this->displayString = $String;
+        // 引数で渡ってきた文字列のバイト数をセット
+        $this->string = $String;
+        $this->width  = strlen($String);
 
     }
 
@@ -173,8 +156,7 @@ class StringDisplay extends AbstractDisplay
     public function open()
     {
 
-        echo PHP_EOL . 'StringDisplayの出力を開始します……' . PHP_EOL . PHP_EOL ;
-        echo '|---------------------------------' . PHP_EOL;
+        $this->printLine();
 
     }
 
@@ -185,7 +167,7 @@ class StringDisplay extends AbstractDisplay
     public function print()
     {
 
-        echo '|' . $this->displayString . PHP_EOL;
+        echo '|' . $this->string . '|' . PHP_EOL;
 
     }
 
@@ -196,17 +178,36 @@ class StringDisplay extends AbstractDisplay
     public function close()
     {
 
-        echo '|---------------------------------' . PHP_EOL;
+        $this->printLine();
+
+    }
+
+    /**
+     * コンストラクタで渡された文字列のバイト数分のヘッダとフッタを出力する
+     * 
+     */
+    private function printLine()
+    {
+
+        echo '+';
+
+        // コンストラクタで渡された文字列のバイト数分繰り返す
+        for ($i = 0 ; $i < $this->width; $i++) {
+            echo '-';
+        }
+
+        echo '+' . PHP_EOL;
 
     }
    
-
 }
 
-// キャラ文字列表示
-$char   = new CharDisplay('Yahaaaa!!');
-$char->display();
+$d1 = new CharDisplay('H');
+$d2 = new StringDisplay('Hello, world');
+$d3 = new StringDisplay('こんにちは。');
 
-// 文字列表示
-$string = new StringDisplay('Banana');
-$string->display();
+$d1->display();
+echo PHP_EOL;
+$d2->display();
+echo PHP_EOL;
+$d3->display();
